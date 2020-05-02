@@ -10,7 +10,9 @@ Based on 3-D scatter plot, linear regression was chosen for the best fit to esti
 
 Weight was calculated by multiplying given mass (kg) with g
 The g value was calculated at various altitudes using the formula
+
 $ g_h  = g_0 * (r_e / (r_e + altitude) )^2 $
+
 where altitude was converted (and approximated) from feet to meters by dividing 3.281
 and g_0 is the standard g value of 9.80661716
 and r_e is the radius of the Earth at 63710088 m
