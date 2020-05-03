@@ -36,10 +36,10 @@ Data with negative and 0 ROC were omitted because they are anomalies and will no
 Based on 3-D scatter plot, linear regression was chosen for the best fit to estimate ROC
 
 #### Calculations
-Weight was calculated by: ![Weight](http://www.sciweavers.org/upload/Tex2Img_1588529175/render.png)
+Weight was calculated by ![Weight](http://www.sciweavers.org/upload/Tex2Img_1588529175/render.png)
 
 ##### G
-The `g` value was calculated at various altitudes using the formula
+The `g` value was calculated at various altitudes by
 
 ![Adjusted G Value](http://www.sciweavers.org/upload/Tex2Img_1588474869/render.png)
 
