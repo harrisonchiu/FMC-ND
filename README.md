@@ -8,6 +8,10 @@ Data for 787-8 (B787-8 (502)eis v11) plane with settings:
 Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a slightly larger aircraft)
   - Climb rate (feet/sec) was multiplied by a factor of 0.92
   - Fuel burned (kg) should be multiplied by a factor of 1.08
+
+Two versions of this was done:
+  - One preadjusted as specified above
+  - One not adjusted above (to be adjusted later along with the weight of the plane)\
 From the data, it was regressed to estimate roc for any altitude and weight\
 
 Data with negative and 0 ROC were omitted because they are anomalies and will not fit with the regression\
