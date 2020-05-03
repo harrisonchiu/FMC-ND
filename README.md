@@ -5,6 +5,7 @@ Data was taken for 787-8 (a slightly smaller aircraft) but was adjusted for 787-
   - Climb rate (feet/sec) was multiplied by a factor of 0.92
   - Fuel burned (kg) should be multiplied by a factor of 1.08
 From the data, it was regressed to estimate roc for any altitude and weight\
+
 Data with negative and 0 ROC were omitted because they are anomalies and will not fit with the regression\
 Based on 3-D scatter plot, linear regression was chosen for the best fit to estimate ROC
 
