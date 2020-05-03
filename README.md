@@ -1,7 +1,6 @@
 # X-Plane-Altitude Part 1
 
-### Purpose
-Estimate ROC with multiple linear regression based on the planes altitude and weight
+## Estimate ROC with multiple linear regression based on the planes' altitude and weight
 
 ### Data Settings
 Rate of climb (feet/sec), ROC, for 787-9 plane to help estimate altitude in X-Plane\
