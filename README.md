@@ -13,6 +13,6 @@ The g value was calculated at various altitudes using the formula
 
 ![Adjusted G Value](http://www.sciweavers.org/upload/Tex2Img_1588474869/render.png)
 
-where altitude was converted (and approximated) from feet to meters by dividing 3.281\
-and g_0 is the standard g value of 9.80661716 m/s^2\
-and r_e is the radius of the Earth at 63710088 m
+where altitude was converted and (approximated) from feet to meters\
+`altitude_feet / 3.281 = altitude_meters`\
+and `g0 = 9.80661716 m/s^2` and `Re = 63710088 m`
