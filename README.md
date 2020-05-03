@@ -11,8 +11,8 @@ Data for 787-8 (B787-8 (502)eis v11) plane with settings:
 
 ### Data Adjustments
 Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a slightly larger aircraft)
-  - Climb rate (feet/sec) was multiplied by a factor of 0.92
-  - Fuel burned (kg) should be multiplied by a factor of 1.08
+  - Climb rate (feet/sec) was multiplied by a factor of `0.92`
+  - Fuel burned (kg) should be multiplied by a factor of `1.08`
 
 ### Versions
 Two versions of this was done:
@@ -22,8 +22,8 @@ Two versions of this was done:
 ### Assumptions
 Data is linearly regressed, so it is all estimations
   - [] check if data is overfitted (github.com/trekhleb/machine-learning-octave/tree/master/linear-regression)
-Assumes ROC is only (or mostly) affected by ALTITUDE and WEIGHT\
-Assumes ALTITUDE and WEIGHT are completely independent\
+Assumes ROC is only (or mostly) affected by `ALTITUDE and WEIGHT`\
+Assumes `ALTITUDE and WEIGHT` are completely independent\
 Takes into account that mass is constantly lost from fuel burnt\
 
 ### Anomalies
