@@ -2,6 +2,26 @@
 
 Regression revision from excessive residual (1100.93548 max residual) from previous linear regression. NONPREADJUSTED data was chosen from rev1, so onward, only NONPREADJUSTED data will be used.
 
+### Quadratic Regression Analysis							
+#### R SQUARED
+R SQUARED has increased to 94%, showing a better fit					
+					
+#### STANDARD ERROR
+Decreased to 330, showing a better fit					
+					
+#### SIGNIFICANCE F AND P
+Extremely small, essentially 0; variables are independent					
+					
+#### EQUATION
+ROC = -0.00404(WGT) + 5.68E-10(WGT^2) - 0.00078(ALT) - 1.9E-6(ALT^2) + 8933.388					
+QUADRATIC SURFACE					
+					
+#### GRAPHS AND RESIDUALS AND FINAL REMARKS
+Residual plots still show a pattern, so it is missing an independent variable 					
+(not too low of an order because I just increased the order)					
+Max residual is 1248.742 which is unacceptable although the average residual is 242.777					
+The max residual occurs at low altitudes where there is a jump in ROC (see graph)					
+
 ### Linear Regression Summary and Comparison to Quadratic Regression
 The linear regression had a good fit with `RSQUARED = 0.909505487` and visually fits\
 The linear regression residual plots showed a pattern which suggested a lack of order or independent variable\
