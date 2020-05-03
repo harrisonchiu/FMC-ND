@@ -1,7 +1,7 @@
 # X-Plane-Altitude
 
-Rate of climb (feet/sec), ROC, for 787-9 plane to help estimate altitude in X-Plane
-Data was taken for 787-8 (a slightly smaller aircraft) but was adjusted for 787-9
+Rate of climb (feet/sec), ROC, for 787-9 plane to help estimate altitude in X-Plane\
+Data was taken for 787-8 (a slightly smaller aircraft) but was adjusted for 787-9\
   - Climb rate (feet/sec) was multiplied by a factor of 0.92
   - Fuel burned (kg) should be multiplied by a factor of 1.08
 From the data, it was regressed to estimate roc for any altitude and weight
