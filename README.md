@@ -40,12 +40,12 @@ Data with negative and 0 ROC were omitted because they are anomalies and will no
 Based on 3-D scatter plot, linear regression was chosen for the best fit to estimate ROC
 
 #### Calculations
-Weight was calculated by ![Weight](http://www.sciweavers.org/upload/Tex2Img_1588529175/render.png)
+Weight was calculated by `F = (m_{init} - m_{fuelburnt}) \times g_{altitude}`
 
 ##### G
 The `g` value was calculated at various altitudes by
 
-![Adjusted G Value](http://www.sciweavers.org/upload/Tex2Img_1588474869/render.png)
+`g_{altitude} = g_{0} \times ( Re / (Re + $(altitude)) )`
 
 where altitude was converted and (approximated) from feet to meters\
 `altitude_{feet} / 3.28084 = altitude_{meters}   (1 feet = 0.3048 metres exactly)`\
@@ -54,6 +54,6 @@ and `g0 = 9.80661716 m/s^2` and `Re = 63710088 m`\
 ##### Mass
 Mass `m` at a point in time was calculated by
 
-![Total Plane Mass After Fuel Burnt](http://www.sciweavers.org/upload/Tex2Img_1588528905/render.png)
+`m = m_{init} - m_{fuelburnt}`
 
 where `g_{altitude}` was calculated as above and `m_{fuelburnt}` was from the data given and `m_{i}` was the initial mass as described in **Data Settings**
