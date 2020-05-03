@@ -11,7 +11,8 @@ Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a sli
 
 Two versions of this was done:
   - One preadjusted as specified above
-  - One not adjusted above (to be adjusted later along with the weight of the plane)\
+  - One not adjusted above (to be adjusted later along with the weight of the plane)
+
 From the data, it was regressed to estimate roc for any altitude and weight\
 
 Data with negative and 0 ROC were omitted because they are anomalies and will not fit with the regression\
