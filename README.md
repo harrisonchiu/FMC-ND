@@ -15,14 +15,14 @@ Datasets for 787-8 (B787-8 (502)eis v11) plane with settings:
 #### Data Adjustments
 Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a slightly larger aircraft)
   - Climb rate (feet/sec) was multiplied by a factor of `0.92`
-  - Fuel burned (kg) should be multiplied by a factor of `1.08`
+  - Fuel burnt (kg) should be multiplied by a factor of `1.08`
 
 #### Versions
 Two versions of this was done:
-  - One preadjusted as specified above
-  - One not adjusted above (to be adjusted later along with the weight of the plane)
- 
- Mass/weight of the plane is later converted to 787-9
+  1. One with **preadjusted data** as specified above **before regression**
+  2. One **not adjusted** in any way using the `Fuel burnt and ROC` data of 787-8\
+The first will be adjusted later for `Weight` to fit the data of 787-9 *(initial mass used was a 787-8)*\
+The second will be adjusted later for `Fuel burnt, ROC, and Weight` to fit the data of 787-9\
 
 #### Assumptions
 Data is linearly regressed, so it is all estimations
