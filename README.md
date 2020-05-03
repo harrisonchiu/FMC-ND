@@ -45,7 +45,7 @@ Weight was calculated by `F = (m_{init} - m_{fuelburnt}) \times g_{altitude}`
 ##### G
 The `g` value was calculated at various altitudes by
 
-`g_{altitude} = g_{0} \times ( Re / (Re + $(altitude)) )`
+`g_{altitude} = g_{0} \times ( Re / (Re + $(altitude)) )^2`
 
 where altitude was converted and (approximated) from feet to meters\
 `altitude_{feet} / 3.28084 = altitude_{meters}   (1 feet = 0.3048 metres exactly)`\
