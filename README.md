@@ -26,7 +26,7 @@ The second will be adjusted later for `Fuel burnt, ROC, and Weight` to fit the d
 
 #### Assumptions
 Data is linearly regressed, so it is all estimations
-  - [] check if data is overfitted (github.com/trekhleb/machine-learning-octave/tree/master/linear-regression)
+  - [ ] check if data is overfitted (github.com/trekhleb/machine-learning-octave/tree/master/linear-regression)
 Assumes ROC is only (or mostly) affected by `ALTITUDE and WEIGHT`\
 Assumes `ALTITUDE and WEIGHT` are completely independent\
 Takes into account that mass is constantly lost from fuel burnt\
