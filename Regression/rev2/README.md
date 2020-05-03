@@ -11,7 +11,7 @@ However, based on how the data is gathered, we are stuck with only WEIGHT/MASS a
 #### Problems
 Data still has a large residual with `max_residual = 1248.742`, although the `avg_magnitude_residual = 242.777619`\
 The max residual is still abnormally high despite having a better fit and lower average residual magnitude and lower standard error.\
-**Suggests that this is an anomaly.**\
+                                      **Suggests that this is an anomaly.**\
 Visually, this anomaly can be seen in the graph at low altitudes and high ROC, where it starts slowly increasing and then has a large jump.\
 If these data points are seperated, a much better regression can be done.
 
