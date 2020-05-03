@@ -25,11 +25,11 @@ The first will be adjusted later for `Weight` to fit the data of 787-9 *(initial
 The second will be adjusted later for `Fuel burnt, ROC, and Weight` to fit the data of 787-9\
 
 #### Assumptions
-Data is linearly regressed, so it is all estimations
+- Data is linearly regressed, so it is all estimations
   - [ ] check if data is overfitted (github.com/trekhleb/machine-learning-octave/tree/master/linear-regression)
-Assumes ROC is only (or mostly) affected by `ALTITUDE and WEIGHT`\
-Assumes `ALTITUDE and WEIGHT` are completely independent\
-Takes into account that mass is constantly lost from fuel burnt\
+- Assumes ROC is only (or mostly) affected by `ALTITUDE and WEIGHT`
+- Assumes `ALTITUDE and WEIGHT` are completely independent
+- Takes into account that mass is constantly lost from fuel burnt
 
 #### Anomalies
 Data with negative and 0 ROC were omitted because they are anomalies and will not fit with the regression\
