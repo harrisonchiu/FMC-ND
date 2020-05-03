@@ -9,8 +9,8 @@ From the data, it was regressed to estimate roc for any altitude and weight\
 Data with negative and 0 ROC were omitted because they are anomalies and will not fit with the regression\
 Based on 3-D scatter plot, linear regression was chosen for the best fit to estimate ROC
 
-Weight was calculated by multiplying given mass (kg) with g\
-The g value was calculated at various altitudes using the formula
+Weight was calculated by multiplying given mass (kg) with `g`\
+The `g` value was calculated at various altitudes using the formula
 
 ![Adjusted G Value](http://www.sciweavers.org/upload/Tex2Img_1588474869/render.png)
 
