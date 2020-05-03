@@ -4,10 +4,14 @@
 
 #### Data Settings
 Rate of climb (feet/sec), ROC, for 787-9 plane to help estimate altitude in X-Plane\
-Data for 787-8 (B787-8 (502)eis v11) plane with settings:
-  1. Design range (approximately 7400 nm)
-  2. Payload varying with initial mass starting from 227818 to [x] kg
-
+Multiple datasets with varying ranges and initial mass improves the accuracy of the regression\
+Datasets for 787-8 (B787-8 (502)eis v11) plane with settings:
+  1. 7400 nm (design range) and 227818 kg initial mass (standard payload and close to MTOW of 227930 kg)
+  2. 7400 nm (design range) and 211368 kg initial mass (10000 kg payload)
+  3. 7400 nm (design range) and 196454 kg initial mass (0 kg payload)
+  4. 500 nm and 130228 kg initial mass (0 kg payload)
+  5. 3500 nm and 156045 kg initial mass (0 kg payload)
+  
 #### Data Adjustments
 Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a slightly larger aircraft)
   - Climb rate (feet/sec) was multiplied by a factor of `0.92`
@@ -17,6 +21,8 @@ Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a sli
 Two versions of this was done:
   - One preadjusted as specified above
   - One not adjusted above (to be adjusted later along with the weight of the plane)
+ 
+ Mass/weight of the plane is later converted to 787-9
 
 #### Assumptions
 Data is linearly regressed, so it is all estimations
