@@ -3,7 +3,8 @@
 Rate of climb (feet/sec), ROC, for 787-9 plane to help estimate altitude in X-Plane\
 Data for 787-8 (B787-8 (502)eis v11) plane with settings:
   1. Design range (approximately 7400 nm)
-  2. Payload of 21420 kg\
+  2. Payload of 21420 kg
+  
 Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a slightly larger aircraft)
   - Climb rate (feet/sec) was multiplied by a factor of 0.92
   - Fuel burned (kg) should be multiplied by a factor of 1.08
