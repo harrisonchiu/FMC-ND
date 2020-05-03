@@ -12,6 +12,10 @@ Datasets for 787-8 (B787-8 (502)eis v11) plane with settings:
   4. 500 nm and 130228 kg initial mass (0 kg payload)
   5. 3500 nm and 156045 kg initial mass (0 kg payload)
   
+As seen in graphs (weight vs ROC angle), there are notable gaps in data for $(weight) ∈ [1.57e+6, 1.85e+6]\
+Although relationship is already established, more datasets can be included for a more complete regression
+- [ ] Add more datasets
+  
 #### Data Adjustments
 Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a slightly larger aircraft)
   - Climb rate (feet/sec) was multiplied by a factor of `0.92`
