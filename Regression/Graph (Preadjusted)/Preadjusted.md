@@ -1,1 +1,3 @@
-# Preadjusted Data Graphs with x1.08 fuel burnt and x0.92 ROC
+# Preadjusted Data Graphs
+x1.08 fuel burnt\
+x0.92 ROC
