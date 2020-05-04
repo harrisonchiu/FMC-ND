@@ -1,3 +1,8 @@
+PARALLAX XYLOID 10
+RANGE     2000 NM
+PAYLOAD   0 KG
+MASS INIT 142697 KG  
+ 
  -----------------------------------------------------------------------------
  Manoeuvre segment 1 starts at:
  
