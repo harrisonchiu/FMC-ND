@@ -1,1 +1,0 @@
-# Non-adjusted data graphs
