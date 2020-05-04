@@ -14,4 +14,4 @@ So, even in the scenario where the most prominent anomaly is removed, data still
 More data should **not** be removed to see a better fit.\
 **Suggests that the influence of higher order polynomials is not a factor for a better fit and a new independent variable is needed for a better fit**\
 All equations are visually similar to the linear equation and overfitting does not appear to be a problem (not sure about orders above 4).\
-The 4th order can be used for the "best" fit but even a linear one is sufficient and a quadratic surface is more than sufficient.\
+The 4th order can be used for the "best" fit but even a linear one is sufficient and a quadratic surface is more than sufficient as all have 0.95+ R SQUARED
