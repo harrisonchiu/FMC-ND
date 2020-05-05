@@ -1,4 +1,4 @@
-# Addition of 5 More Datasets and Removal of ROC Data Above 3000 feet/min
+## Addition of 5 More Datasets and Removal of ROC Data Above 3000 feet/min
 
 The plane will never have an ROC of above 3000 feet/min normally. More datasets were included to accomadate for less data and fill in gaps of data seen in Weight and ROC graph view in previous revisions.\
 Data used were **not ANTIANOMALY** (included the take off ROC data)
@@ -25,7 +25,7 @@ Spacing and density of data points could affect the regression (currently somewh
 Only R Squared, Standard Error, Max Residual, Average Residual, and Equation were deemed significant.\
 Adjusted R Square and R Square were essentially the same value for all regression.\
 All had a similar pattern in residual plots as seen previously.\
-FORMAT: `R Squared // Standard Error // MAX Residual // Average Residual` // `Equation (only 5 s.f. shown) where R = ROC, W = Weight, A = Altitude`\
+FORMAT: `R Squared // Standard Error // MAX Residual // Average Residual` // `Equation (not all s.f. shown) where R = ROC, W = Weight, A = Altitude`\
 **1ST ORDER:** `0.879434 // 256.7423 // 848.9893 // 207.5285` // `R = -1.1784e-3(W) -6.8189e-2(A) + 5.6169e3`\
 **2ND ORDER:** `0.961271 // 145.7302 // 524.3858 // 104.2483` // `R = -0.0039424627253(W) + 7.41858e-10(W^2) + 3.89078e-3(A) - 1.57152e-6(A^2) + 7662.1951276`\
 **4TH ORDER:** `0.974605 // 118.358 // 472.7458 // 84.73256` // `R = 3.022e-2(W) -2.915e-8(W^2) + 1.1487(W^3) - 1.64269(W^4) + 1.549e-1(A) - 1.7679e-5(A^2) + 5.54875e-10(A^3) - 6.111e-15(A^4)`\
