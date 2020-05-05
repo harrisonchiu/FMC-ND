@@ -41,7 +41,11 @@ Overfitting does not seem to be a problem for the data we will use because
 8th Order is an anomaly and should not be used, probably a bug with the amount of data and variables.\
 Regardless, **Order 2-8 does not have much difference in terms of residual and fit**\
 
-**4th Order or 6th Order** should be used to give the best fit, although 2nd Order can be used **if estimation of ROC near take off is prefered** (see their respective graphs).
+**6th Order** should be chosen if lower residual average is prefered.\
+**4th Order** should be chosen if lower max residual is prefered.\
+**2nd Order** should be chosen if it estimation of take off ROS is prefered.\
+See their respective graphs\
+4th Order and 6th Order have the **same fit**
 
 Max residual could still be considered high (~500 difference), but it is unlikely to get lower residuals unless another independent variable is introduced or an excessively high order regression, considering the amount of revisions made.
 - [ ] use numpy/matplotlib for machine learning?
