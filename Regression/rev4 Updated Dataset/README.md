@@ -5,7 +5,7 @@ Data used were **not ANTIANOMALY** (included the take off ROC data)
 
 
 ### Data Settings
-Total datasets for 787-8 (B787-8 (502)eis v11) plane with settings (the added ones italicized)
+Total datasets for 787-8 (B787-8 (502)eis v11) plane with settings (the added ones italicized)\
 FORMAT: `Range // Payload // Initial Mass`
   1. `7400 nm (design range) // Standard Payload (close to 227930 kg MTOW) // 227818 kg`
   2. `7400 nm (design range) // 10000 kg // 211368 kg`
