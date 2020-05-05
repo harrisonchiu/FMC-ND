@@ -14,12 +14,16 @@ Datasets for 787-8 (B787-8 (502)eis v11) plane with settings:
   
 As seen in graphs (weight vs ROC angle), there are notable gaps in data for $(weight) ∈ [1.57e+6, 1.85e+6]\
 Although relationship is already established, more datasets can be included for a more complete regression
-- [ ] Add more datasets
+- [x] Add more datasets
+- [ ] Reorganize datasets (explained in rev4)
   
 #### Data Adjustments
 Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a slightly larger aircraft)
   - Climb rate (feet/sec) was multiplied by a factor of `0.92`
   - Fuel burnt (kg) should be multiplied by a factor of `1.08`
+EDIT: the above will not be used\
+
+Mass will be adjusted by the ratio of MTOW of 787-9 to 787-8
 
 #### Versions
 Two versions of this was done:
