@@ -26,10 +26,22 @@ Only R Squared, Standard Error, Max Residual, Average Residual, and Equation wer
 Adjusted R Square and R Square were essentially the same value for all regression.\
 All had a similar pattern in residual plots as seen previously.\
 FORMAT: `R Squared // Standard Error // MAX Residual // Average Residual` // `Equation (only 5 s.f. shown) where R = ROC, W = Weight, A = Altitude`\
-**1ST ORDER:** `0.879434 // 256.7423 // 848.9893 // 207.5285` // `R = -1.1784e-3(W) -6.8189(A) + 5.6169`
+**1ST ORDER:** `0.879434 // 256.7423 // 848.9893 // 207.5285` // `R = -1.1784e-3(W) -6.8189e-2(A) + 5.6169e3`\
+**2ND ORDER:** `0.961271 // 145.7302 // 524.3858 // 104.2483` // `R = -0.0039424627253(W) + 7.41858e-10(W^2) + 3.89078e-3(A) - 1.57152e-6(A^2) + 7662.1951276`\
+**4TH ORDER:** `0.974605 // 118.358 // 472.7458 // 84.73256` // `R = 3.022e-2(W) -2.915e-8(W^2) + 1.1487(W^3) - 1.64269(W^4) + 1.549e-1(A) - 1.7679e-5(A^2) + 5.54875e-10(A^3) - 6.111e-15(A^4)`\
+**6TH ORDER:** `0.97574 // 116.03 // 513.2387 // 76.377732` // `R = -8.515e-1(W) + 1.169e-6(W^2) - 8.4558e-13(W^3) + 3.38686e-19(W^4) - 7.11462e-26(W^5) + 6.11762e-33(W^6) + 5.877e-2(A) + 6.3524e-6(A^2) - 1.6782e-9(A^3) + 8.89e-14(A^4) - 1.88e-14(A^5) + 1.411e-23(A^6)`\
+**8TH ORDER:** `0.979 // 107.36 // 478.3756 // 72.66976` // `See excel sheet (too long); visually linear because all coefficients for weight is essentially 0`\
+See excel worksheet for more info
 
+Overfitting does not seem to be a problem for the data we will use because
+  1. Coefficients are very small and would not change value much
+  2. Estimation of ROC will use altitude and weight similar to training data, so rarely is it ever extrapolated
+  
+**8th Order is a linear equation, ???????** Excel was used for regression; visually appears to have the fit of a linear, but Excel said it has much better fit?\
+8th Order is an anomaly and should not be used, probably a bug with the amount of data and variables.\
+Regardless, **Order 2-8 does not have much difference in terms of residual and fit**\
 
+**4th Order or 6th Order** should be used to give the best fit, although 2nd Order can be used **if estimation of ROC near take off is prefered** (see their respective graphs).
 
-
-
-
+Max residual could still be considered high (~500 difference), but it is unlikely to get lower residuals unless another independent variable is introduced or an excessively high order regression, considering the amount of revisions made.
+- [ ] use numpy/matplotlib for machine learning?
