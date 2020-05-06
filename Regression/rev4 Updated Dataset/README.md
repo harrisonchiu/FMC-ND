@@ -4,7 +4,7 @@ The plane will never have an ROC of above 3000 feet/min normally. More datasets 
 Data used were **not ANTIANOMALY** (included the take off ROC data)
 
 
-**EDIT:** On revision, R Squared is **not** adequate measure for fitness for 2nd order and above. Data and comments below relating to R Squared should be take to **less consideration**. MSE is a much better comparison tool (see Excel worksheet) and in the context of our working, max residual as well.
+**EDIT:** On revision, **R Squared is inadequate measure** for fitness for 2nd order and above. Data and comments below relating to R Squared should be take to **less consideration**. MSE is a much better comparison tool (see Excel worksheet) and in the context of our working, max residual as well.
 
 
 ### Data Settings
