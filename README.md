@@ -44,6 +44,8 @@ Data with negative and 0 ROC were omitted because they are anomalies and will no
 Based on 3-D scatter plot, linear regression was chosen for the best fit to estimate ROC
 
 #### Calculations
+Regression was done with the function model: `z = ax + bx^2 + . . . + sy + ty^2 + . . . + intercept`\
+Because data points were mostly a flat plane and exponential/log seemed unneccessary.\
 Weight was calculated by `F = (m_{init} - m_{fuelburnt}) \times g_{altitude}`
 
 ##### G
