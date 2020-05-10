@@ -41,6 +41,7 @@ Other causes summary (details explained in `README.md` in `rev4`)
 - [x] missing independent variable (a constraint we have)
 - [x] too low of an order (unlikely shown in many revisions)
 - [ ] a different function model (most possible reason)
+  - Log model poor fit (< 46 R^2 although inadequate measure, still good summary of high residuals) (no documentation)
 
 ##### Regression Analysis
 EDIT: Some regression analysis were wrong (ex: using R^2 for goodness of fit in non-linear models) however, generally, the statements still stands because MSE and Std Error were also calculated. Take R^2 to less consideration for non-linear models.
