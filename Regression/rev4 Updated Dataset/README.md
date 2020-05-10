@@ -59,5 +59,5 @@ This is a problem as it usually indicates a bias in the regression and therefore
 This indicates that
 - [x] a missing variable
 - [x] too low of an order
-- [ ] a missing interaction between terms (a different function model)
+- [ ] a missing interaction between terms (a different function model)\
 In previous revisions, we showed that higher models do not change much of the equation because its coefficients of higher polynomials converge to zero. We were told that only two variables are needed and will be used to estimate the ROC, so based on our given constraint, it will not be changed. A possibility is that a different model function could better describe the relationships.
