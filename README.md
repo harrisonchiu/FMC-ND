@@ -20,6 +20,40 @@ Summary of each revision:
     - Regression fits better with removal of above 3000 feet/min data
     - 6th order was chosen since overfitting was not considered a problem
 
+#### Assumptions
+- Assumes ROC is only (or mostly) affected by `ALTITUDE and WEIGHT`
+- Assumes `ALTITUDE and WEIGHT` are completely independent
+  - EDIT: Significance P and F in regression analysis supports this
+- Mass is only lost from fuel burnt (no refilling fuel)
+- The datasets above shows the general range of altitude and weight that will happen to the plane, so no extrapolation is needed (i.e. X-Plane will use altitude and weight combinations similar to the training data) (this and *very* small value coefficients **suggest overfitting is not a problem for our use** in that range)
+- Max 3000 feet/min ROC
+
+#### Removal of Data
+Data with negative and 0 ROC were omitted because they are anomalies and will not fit with the regression\
+Data with above 3000 ROC were omitted because it is unlikely a real plane will climb that fast.
+
+#### General Issues and Explanations
+##### Residual Plots
+On all regressions (even high order ones) have a pattern in its residual plots (Altitude and ROC). This implies that there is a bias in the regression.\
+However, in the *Error View* of the graphs (see `rev4 Updated Dataset (Order 6) Error View` plot) that the take-off data (low altitude) causes its initial pattern because of the sudden jump in ROC followed by a max ROC and a slow decline. The other pattern is at high altitudes where there are two lines of ROC on top of each other. The regression does its best to fit both of them (initially fitting the bottom then slowly trying to fit the top one) which causes the pattern in the residual plot. This can be fixed by a revision in the dataset and a possible omission to anomalies.\
+
+Other causes summary (details explained in `README.md` in `rev4`)
+- [x] missing independent variable (a constraint we have)
+- [x] too low of an order (unlikely shown in many revisions)
+- [ ] a different function model (most possible reason)
+
+##### Regression Analysis
+EDIT: Some regression analysis were wrong (ex: using R^2 for goodness of fit in non-linear models) however, generally, the statements still stands because MSE and Std Error were also calculated. Take R^2 to less consideration for non-linear models.
+
+#### Current Model/Criteria to Choose
+Current model is *rev4 6th Order*\
+Type of model is `polynomial surface`\
+See excel worksheet for equation\
+Criteria
+- Must have decent fit (seen visually)
+- Low errors
+- Low max/avg magnitudal residual (cannot have model estimating ROC poorly at any point based on training data)
+
 #### Data Settings
 Rate of climb (feet/sec), ROC, for 787-9 plane to help estimate altitude in X-Plane\
 Multiple datasets with varying ranges and initial mass improves the accuracy of the regression\
@@ -66,30 +100,3 @@ Mass `m` at a point in time was calculated by
 `m = m_{init} - m_{fuelburnt}`
 
 where `g_{altitude}` was calculated as above and `m_{fuelburnt}` was from the data given and `m_{i}` was the initial mass as described in **Data Settings**
-
-#### Assumptions
-- Assumes ROC is only (or mostly) affected by `ALTITUDE and WEIGHT`
-- Assumes `ALTITUDE and WEIGHT` are completely independent
-  - EDIT: Significance P and F in regression analysis supports this
-- Mass is only lost from fuel burnt (no refilling fuel)
-- The datasets above shows the general range of altitude and weight that will happen to the plane, so no extrapolation is needed (i.e. X-Plane will use altitude and weight combinations similar to the training data) (this and *very* small value coefficients **suggest overfitting is not a problem for our use** in that range)
-- Max 3000 feet/min ROC
-
-#### Removal of Data
-Data with negative and 0 ROC were omitted because they are anomalies and will not fit with the regression\
-Data with above 3000 ROC were omitted because it is unlikely a real plane will climb that fast.
-
-#### Issues
-On all regressions (even high order ones) have a pattern in its residual plots (Altitude and ROC). This implies that there is a bias in the regression.\
-However, in the *Error View* of the graphs (see `rev4 Updated Dataset Order 6 Error View` plot) that the take-off data (low altitude) causes its initial pattern because of the sudden jump in ROC followed by a max ROC and a slow decline. The other cause is at high altitudes where there are two lines of ROC on top of each other. The regression does its best to fit both of them (initially fitting the bottom then slowly trying to fit the top one) which causes the pattern in the residual plot. This can be fixed by a revision in the dataset and a possible omission to anomalies.\
-
-EDIT: Some regression analysis were wrong (ex: using R^2 for goodness of fit in non-linear models) however, generally, the statements still stands because MSE and Std Error were also calculated. Take R^2 to less consideration for non-linear models.
-
-#### Current Model/Criteria to Choose
-Current model is *rev4 6th Order*\
-Type of model is `polynomial surface`\
-See excel worksheet for equation\
-Criteria
-- Must have decent fit (seen visually)
-- Low errors
-- Low max/avg magnitudal residual (cannot have model estimating ROC poorly at any point based on training data)
