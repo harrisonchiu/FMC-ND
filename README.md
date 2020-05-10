@@ -35,7 +35,8 @@ Data with above 3000 ROC were omitted because it is unlikely a real plane will c
 #### General Issues and Explanations
 ##### Residual Plots
 On all regressions (even high order ones) have a pattern in its residual plots (Altitude and ROC). This implies that there is a bias in the regression.\
-However, in the *Error View* of the graphs (see `rev4 Updated Dataset (Order 6) Error View` plot) that the take-off data (low altitude) causes its initial pattern because of the sudden jump in ROC followed by a max ROC and a slow decline. The other pattern is at high altitudes where there are two lines of ROC on top of each other. The regression does its best to fit both of them (initially fitting the bottom then slowly trying to fit the top one) which causes the pattern in the residual plot. This can be fixed by a revision in the dataset and a possible omission to anomalies.\
+However, in the *Error View* of the graphs (see `rev4 Updated Dataset (Order 6) Error View` plot) that the take-off data (low altitude) causes its initial pattern because of the sudden jump in ROC followed by a max ROC and a slow decline. The other pattern is at high altitudes where there are two lines of ROC on top of each other. The regression does its best to fit both of them (initially fitting the bottom then slowly trying to fit the top one) which causes the pattern in the residual plot.\
+This can be fixed by a revision in the dataset and a possible omission to anomalies. Changes to the model function is unlikely to decrease residual since no single equation can fit two lines on top of each other (but it can fix the take-off ROC jump).
 
 Other causes summary (details explained in `README.md` in `rev4`)
 - [x] missing independent variable (a constraint we have)
@@ -81,7 +82,7 @@ May be adjusted by after regression:
   - Mass adjusted by the ratio of MTOW of 787-9 to 787-8
 
 #### Calculations
-Regression was done with the function model: `z = ax + bx^2 + . . . + sy + ty^2 + . . . + intercept`\
+Regression was done with the function model: `z = (a)x + (b)x^2 + . . . + (A)y + (B)y^2 + . . . + (intercept)`\
 Because data points were mostly a flat plane and exponential/log would not fit well.\
 
 Weight was calculated by `F = (m_{init} - m_{fuelburnt}) \times g_{altitude}`
