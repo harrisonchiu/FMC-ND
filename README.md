@@ -46,7 +46,7 @@ May be adjusted by after regression:
 - Assumes `ALTITUDE and WEIGHT` are completely independent
   - EDIT: Significance P and F in regression analysis supports this
 - Mass is only lost from fuel burnt (no refilling fuel)
-- The datasets above shows the general range of altitude and weight that will happen to the plane, so no extrapolation is needed (i.e. X-Plane will use altitude and weight combinations similar to the training data) (this and small value coefficients **suggest overfitting is not a problem** in that range)
+- The datasets above shows the general range of altitude and weight that will happen to the plane, so no extrapolation is needed (i.e. X-Plane will use altitude and weight combinations similar to the training data) (this and *very* small value coefficients **suggest overfitting is not a problem for our use** in that range)
 - Max 3000 feet/min ROC
 
 #### Removal of Data
@@ -83,7 +83,8 @@ where `g_{altitude}` was calculated as above and `m_{fuelburnt}` was from the da
 
 #### Current Model/Criteria to Choose
 Current model is *rev4 6th Order*\
-See excel worksheet for equation `polynomial surface`\
+Type of model is `polynomial surface`\
+See excel worksheet for equation\
 Criteria
 - Must have decent fit (seen visually)
 - Low errors
