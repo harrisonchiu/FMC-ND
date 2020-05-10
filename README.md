@@ -21,7 +21,9 @@ Datasets for 787-8 (B787-8 (502)eis v11) plane with settings:\
   10. 2000 nm // 0 kg // 142697 kg
 
 #### Revisions
-In each revision, I regress the data and analyze it to improve it on the next revision. Different changes were made to previous revisions to see any changes/improvements in the regression. I also did new revisions when new info about X-Plane came to light (ex: changing to max 3000 feet/min ROC).
+In each revision, I regress the data and analyze it to improve it on the next revision. Different changes were made to previous revisions to see any changes/improvements in the regression. I also did new revisions when new info about X-Plane came to light (ex: changing to max 3000 feet/min ROC).\
+
+See each revision's `README.md` for more detail
 
 Summary of each revision:
   1) Linear surface regression because 3D scatter plot generally looked like a flat plane
