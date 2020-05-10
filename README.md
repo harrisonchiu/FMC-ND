@@ -1,51 +1,68 @@
 # X-Plane-Altitude Part 1
 
-Estimate ROC with multiple linear regression based on the planes' altitude and weight
+**This is a documentation of the regression and its analysis so that future changes can easily be made to the altitude estimator and flight path computer in X-Plane.**
+
+Estimate the 787-9 plane's ROC with multiple regression from the 787-8 plane's altitude and weight
 
 #### Data Settings
 Rate of climb (feet/sec), ROC, for 787-9 plane to help estimate altitude in X-Plane\
 Multiple datasets with varying ranges and initial mass improves the accuracy of the regression\
-Datasets for 787-8 (B787-8 (502)eis v11) plane with settings:
-  1. 7400 nm (design range) and 227818 kg initial mass (standard payload and close to MTOW of 227930 kg)
-  2. 7400 nm (design range) and 211368 kg initial mass (10000 kg payload)
-  3. 7400 nm (design range) and 196454 kg initial mass (0 kg payload)
-  4. 500 nm and 130228 kg initial mass (0 kg payload)
-  5. 3500 nm and 156045 kg initial mass (0 kg payload)
-  
-As seen in graphs (weight vs ROC angle), there are notable gaps in data for $(weight) ∈ [1.57e+6, 1.85e+6]\
-Although relationship is already established, more datasets can be included for a more complete regression
-- [x] Add more datasets
-- [ ] Reorganize datasets (explained in rev4)
+Datasets for 787-8 (B787-8 (502)eis v11) plane with settings:\
+  FORMAT: `Range // Payload // Initial Mass`
+  1. 7400 nm (design range) // Standard Payload (close to 22000 kg) // 227818 kg
+  2. 7400 nm (design range) // 10000 kg // 211368 kg
+  3. 7400 nm (design range) // 0 kg // 196454 kg
+  4. 500 nm // 0 kg // 130228 kg
+  5. 3500 nm // 0 kg // 156045 kg
+  6. 3500 nm // 10000 kg // 168155 kg
+  7. 3500 nm // 15000 kg // 174261 kg
+  8. 3500 nm // 20000 kg // 180390 kg
+  9. 3500 nm // 25000 kg // 186546 kg
+  10. 2000 nm // 0 kg // 142697 kg
+
+#### Revisions
+In each revision, I regress the data and analyze it to improve it on the next revision. Different changes were made to previous revisions to see any changes/improvements in the regression. I also did new revisions when new info about X-Plane came to light (ex: changing to max 3000 feet/min ROC).
+
+Summary of each revision:
+  1) Linear surface regression because 3D scatter plot generally looked like a flat plane
+    - Linear may not enough
+  2) Comparing Quadratic regression and Linear regression
+    - Quadratic is better
+  3) Removal of take-off ROC data (kinda outliers) and increasing order to 8th
+    - Increasing order does make it fit better and does not drastically change the plane (overfitting may not be a problem)
+  4) Adding 5 more datasets and changing max ROC to 3000 feet/min
+    - Regression fits better with removal of above 3000 feet/min data
+    - 6th order was chosen since overfitting was not considered a problem
   
 #### Data Adjustments
-Data was taken for 787-8 (B787-8 (502)eis v11) but was adjusted for 787-9 (a slightly larger aircraft)
-  - Climb rate (feet/sec) was multiplied by a factor of `0.92`
-  - Fuel burnt (kg) should be multiplied by a factor of `1.08`
-EDIT: the above will not be used\
-
-Mass will be adjusted by the ratio of MTOW of 787-9 to 787-8
-
-#### Versions
-Two versions of this was done:
-  1. One with **preadjusted data** as specified above **before regression**
-  2. One **not adjusted** in any way using the `Fuel burnt and ROC` data of 787-8\
-The first will be adjusted later for `Weight` to fit the data of 787-9 *(initial mass used was a 787-8)*\
-The second will be adjusted later for `Fuel burnt, ROC, and Weight` to fit the data of 787-9\
+Data was taken for 787-8 (B787-8 (502)eis v11) but **will be** adjusted for 787-9 (a slightly larger aircraft)\
+May be adjusted by after regression:
+  - Climb rate (feet/sec) multiplied by a factor of `0.92`
+  - Fuel burnt (kg) multiplied by a factor of `1.08`
+  - Mass adjusted by the ratio of MTOW of 787-9 to 787-8
 
 #### Assumptions
-- Data is linearly regressed, so it is all estimations
-  - [ ] check if data is overfitted (github.com/trekhleb/machine-learning-octave/tree/master/linear-regression)
 - Assumes ROC is only (or mostly) affected by `ALTITUDE and WEIGHT`
 - Assumes `ALTITUDE and WEIGHT` are completely independent
+  - EDIT: Significance P and F in regression analysis supports this
 - Mass is only lost from fuel burnt (no refilling fuel)
+- The datasets above shows the general range of altitude and weight that will happen to the plane, so no extrapolation is needed (i.e. X-Plane will use altitude and weight combinations similar to the training data) (this and small value coefficients **suggest overfitting is not a problem** in that range)
+- Max 3000 feet/min ROC
 
-#### Anomalies
+#### Removal of Data
 Data with negative and 0 ROC were omitted because they are anomalies and will not fit with the regression\
-Based on 3-D scatter plot, linear regression was chosen for the best fit to estimate ROC
+Data with above 3000 ROC were omitted because it is unlikely a real plane will climb that fast.
+
+#### Issues
+On all regressions (even high order ones) have a pattern in its residual plots (Altitude and ROC). This implies that there is a bias in the regression.\
+However, in the *Error View* of the graphs (see `rev4 Updated Dataset Order 6 Error View` plot) that the take-off data (low altitude) causes its initial pattern because of the sudden jump in ROC followed by a max ROC and a slow decline. The other cause is at high altitudes where there are two lines of ROC on top of each other. The regression does its best to fit both of them (initially fitting the bottom then slowly trying to fit the top one) which causes the pattern in the residual plot. This can be fixed by a revision in the dataset and a possible omission to anomalies.\
+
+EDIT: Some regression analysis were wrong (ex: using R^2 for goodness of fit in non-linear models) however, generally, the statements still stands because MSE and Std Error were also calculated. Take R^2 to less consideration for non-linear models.
 
 #### Calculations
 Regression was done with the function model: `z = ax + bx^2 + . . . + sy + ty^2 + . . . + intercept`\
-Because data points were mostly a flat plane and exponential/log seemed unneccessary.\
+Because data points were mostly a flat plane and exponential/log would not fit well.\
+
 Weight was calculated by `F = (m_{init} - m_{fuelburnt}) \times g_{altitude}`
 
 ##### G
@@ -63,3 +80,11 @@ Mass `m` at a point in time was calculated by
 `m = m_{init} - m_{fuelburnt}`
 
 where `g_{altitude}` was calculated as above and `m_{fuelburnt}` was from the data given and `m_{i}` was the initial mass as described in **Data Settings**
+
+#### Current Model/Criteria to Choose
+Current model is *rev4 6th Order*\
+See excel worksheet for equation `polynomial surface`\
+Criteria
+- Must have decent fit (seen visually)
+- Low errors
+- Low max/avg magnitudal residual (cannot have model estimating ROC poorly at any point based on training data)
