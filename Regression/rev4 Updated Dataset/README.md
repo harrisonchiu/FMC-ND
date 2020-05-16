@@ -44,6 +44,7 @@ Since the residual plots demonstrated a pattern which suggests a different model
 Max Residual: 522.04\
 Average Residual: 104.87\
 MSE: 10639.37865\
+Not much improvement from 6th Order
 
 
 Overfitting does not seem to be a problem for the data we will use because
