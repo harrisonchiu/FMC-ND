@@ -36,6 +36,16 @@ FORMAT: `R Squared // Standard Error // MAX Residual // Average Residual` // `Eq
 **8TH ORDER:** `0.979 // 107.36 // 478.3756 // 72.66976` // `See excel sheet (too long); visually linear because all coefficients for weight is essentially 0`\
 See excel worksheet for more info
 
+#### Different Model Functions
+Since the residual plots demonstrated a pattern which suggests a different model function is needed to explain the interaction (explained in #Issues). Uses same dataset.
+
+**DIFFERENT MODEL FUNCTION ATTEMPT 1**
+`@(x,y) ( p(1) + p(2)*cos(p(3)*x) + p(4)*sin(p(5)*x) + p(6)*cos(p(7)*y) + p(8)*sin(p(9)*y) + p(10)*x + p(11)*x.^2 + p(12)*y + p(13)*y.^2 )`\
+Max Residual: 522.04\
+Average Residual: 104.87\
+MSE: 10639.37865\
+
+
 Overfitting does not seem to be a problem for the data we will use because
   1. Coefficients are very small and would not change value much
   2. Estimation of ROC will use altitude and weight similar to training data, so rarely is it ever extrapolated
