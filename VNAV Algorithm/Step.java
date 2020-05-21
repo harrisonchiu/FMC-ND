@@ -22,7 +22,7 @@ class Step {
     private double initial_altitude, final_altitude;
 
     // Calculate g value at relative altitudes
-    private static get_g_value(altitude) {
+    private get_g_value(altitude) {
         private double g_0 = 9.80661716;
         private double earth_radius = 63710088;
         private double g_altitude;
@@ -34,14 +34,14 @@ class Step {
     }
 
     // Calculate the amount of fuel burnt to find current mass
-    private static get_fuelloss(sfc, thrust, step_time) {
+    private get_fuelloss(sfc, thrust, step_time) {
         private double fuel_loss = 2 * sfc * thrust * step_time;
         
         return fuel_loss;
     }
 
     // Use get_fuelloss() and get_g_value() to calculate current weight
-    private static get_weight(mass, altitude) {
+    private get_weight(mass, altitude) {
         // Don't know values yet to calculate fuel loss
         private double sfc, thrust, step_time;
 
@@ -57,7 +57,7 @@ class Step {
     }
 
     // Estimate ROC from current weight and altitude
-    public static get_climbrate(weight, altitude) {
+    public get_climbrate(weight, altitude) {
         private double w = weight;
         private double a = altitude;
         private double roc, roc_weight, roc_altitude;
