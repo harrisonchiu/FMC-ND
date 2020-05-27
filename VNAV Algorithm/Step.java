@@ -90,7 +90,7 @@ public class Step2 {
 
     // Unused method
     public double findDistanceToAltitude(int altitude) {
-        double dist_to_altitude = null;
+        double dist_to_altitude = 1;
         
         // Not known yet
 
