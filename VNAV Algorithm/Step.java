@@ -14,7 +14,7 @@
  * # Constants for fuel loss calculations?
  */
 
-public class Step2 {
+public class Step {
     // Find current altitude
     private double initial_altitude; // Use initial or final altitude for fuel/roc calculations???
     private double final_altitude;
