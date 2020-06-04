@@ -16,7 +16,7 @@
 
 public class Step {
     // Find current altitude
-    private double initial_altitude; // Use initial or final altitude for fuel/roc calculations???
+    private double initial_altitude; // Use initial or final altitude for fuel/roc calculations??? USE INITAL
     private double final_altitude;
     private double initial_mass;
     
