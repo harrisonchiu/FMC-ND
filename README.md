@@ -4,6 +4,13 @@
 
 Estimate the 787-9 plane's ROC with multiple regression from the 787-8 plane's altitude and weight
 
+
+**Units for weight:** `Newtons`\
+**Units for Altitude:** `Feet`\
+**Units for ROC:** `Feet/min`\
+
+
+
 #### Revisions
 In each revision, I regress the data and analyze it to improve it on the next revision. Different changes were made to previous revisions to see any changes/improvements in the regression. I also did new revisions when new info about X-Plane came to light (ex: changing to max 3000 feet/min ROC).\
 
