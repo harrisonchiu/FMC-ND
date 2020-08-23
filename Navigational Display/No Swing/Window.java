@@ -33,6 +33,7 @@ public class Window extends JPanel {
     private NDButton mapKey;
     private NDButton planKey;
     private NDButton menuKey;
+    private Menu menu;
 
     private int[] menuXPos;
     private int[] menuYPos;
@@ -49,26 +50,13 @@ public class Window extends JPanel {
         menuKey = new NDButton(planKey.getSize()[0] + planKey.getX() + planMenuKeysGap, keysY, "MENU", 0, 
                                 "images/menuKeyUnselected.png", "images/menuKeySelected.png");
 
-        menuXPos = new int[] {menuKey.getX(),
-                                menuKey.getX() + menuKey.getWidth(), 
-                                menuKey.getX() + menuKey.getWidth(),
-                                menuKey.getX() - 35, 
-                                menuKey.getX() - 35, 
-                                menuKey.getX() - 10};
-        menuYPos = new int[] {menuKey.getY() + menuKey.getHeight(), 
-                                menuKey.getY() + menuKey.getHeight(), 
-                                menuKey.getY() + menuKey.getHeight() + 650, 
-                                menuKey.getY() + menuKey.getHeight() + 650,
-                                menuKey.getY() + menuKey.getHeight() + 10, 
-                                menuKey.getY() + menuKey.getHeight() + 10};
-
+        menu = new Menu(menuKey);
 
         listeners();
 
         // Create the window itself and draw all the GUI components to it
         window = new JFrame("Route Visualizer");
         window.add(this);
-        window.validate();
         window.pack();
 
         // Window behaviours
@@ -85,13 +73,16 @@ public class Window extends JPanel {
                 if (mapKey.isMouseHover(e.getPoint())) {
                     mapKey.select();
                     planKey.unselect();
+                    menu.setMapMode();
                 }
                 if (planKey.isMouseHover(e.getPoint())) {
                     planKey.select();
                     mapKey.unselect();
+                    menu.setPlanMode();
                 }
                 if (menuKey.isMouseHover(e.getPoint())) {
                     menuKey.toggle();
+                    menu.toggleVisibility();
                 }
                 repaint();
             }
@@ -110,15 +101,17 @@ public class Window extends JPanel {
 
         // Draw the keys
         g2.drawImage(mapKey.getImage(), mapKey.getX(), mapKey.getY(), null);
-        mapKey.paint(g2);
+        mapKey.drawStringCenter(g2);
 
         g2.drawImage(planKey.getImage(), planKey.getX(), planKey.getY(), null);
-        planKey.paint(g2);
+        planKey.drawStringCenter(g2);
 
         g2.drawImage(menuKey.getImage(), menuKey.getX(), menuKey.getY(), null);
-        menuKey.paint(g2);
+        menuKey.drawStringCenter(g2);
 
-        g2.drawPolygon(menuXPos, menuYPos, 6);
+        if (menu.getVisibility()) {
+            menu.drawMenu(g2);
+        }
     }
 
     // Runner
