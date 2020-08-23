@@ -1,5 +1,4 @@
 import java.awt.Graphics2D;
-import java.awt.Graphics;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import java.awt.Image;
@@ -21,8 +20,6 @@ class NDButton {
 
     private boolean selected = false;
 
-    private int buttonWidth;
-    private int buttonHeight;
     private int[] buttonSize = new int[2];
 
     // Constructor inputs
@@ -32,7 +29,6 @@ class NDButton {
 
     // Text variables
     private int textDisplacementHorz;
-    private int textWidth;
     private int textCenterHorz;
     private int textCenterVert;
 
@@ -42,9 +38,9 @@ class NDButton {
         x = xPos;
         y = yPos;
         text = name;
-        textDisplacementHorz = textXDisplacement; // Center of text displacement relative to center
+        textDisplacementHorz = textXDisplacement;
 
-        // Can use ImageIO (needs try, catch)
+        // Create the images of the button
         URL unselectedImageDir = getClass().getClassLoader().getResource(unselectedDir);
         URL selectedImageDir = getClass().getClassLoader().getResource(selectedDir);
 
@@ -53,11 +49,6 @@ class NDButton {
 
         selectedIcon = new ImageIcon(selectedImageDir);
         selectedImage = selectedIcon.getImage();
-
-        // Initialize the size of the button
-        // Assume the size of unselected and selected images are the same
-        buttonWidth = unselectedImage.getWidth(null);
-        buttonHeight = unselectedImage.getHeight(null);
     }
 
 
@@ -122,44 +113,18 @@ class NDButton {
 
     // Getters for the size of the button
     int getWidth() {
-        return buttonWidth;
+        return unselectedImage.getWidth(null);
     }
 
     int getHeight() {
-        return buttonHeight;
+        return unselectedImage.getHeight(null);
     }
 
-    int[] getSize() { // Indirectly sets the size
-        // If the center of text is displaced to the left relative to the center of button
-        if (textDisplacementHorz < 0) {
-            // If the text is sticking out of the button to the left
-            if (textCenterHorz < textDisplacementHorz) {
-                buttonSize[0] = (buttonWidth - textCenterHorz) + textDisplacementHorz;
-            }
-            // If the text is still inside the button
-            else {
-                buttonSize[0] = buttonWidth;
-            }
-        }
-
-        // If the center of text is displaced to the right relative to the center of button
-        else if (textDisplacementHorz > 0) {
-            // If the text is sticking out of the button to the right
-            if (textCenterHorz + textDisplacementHorz + textWidth > buttonWidth) {
-                buttonSize[0] = textCenterHorz + textDisplacementHorz + textWidth;
-            }
-            // If the text is still inside the button
-            else {
-                buttonSize[0] = buttonWidth;
-            }
-        }
-
-        // If no horizontal displacement (center of text is at center of button)
-        else if (textDisplacementHorz == 0) {
-            buttonSize[0] = buttonWidth;
-        }
-
-        buttonSize[1] = buttonHeight;
+    int[] getSize() { 
+        // Indirectly sets the size
+        // Does not include the size of text protruding out
+        buttonSize[0] = getWidth();
+        buttonSize[1] = getHeight();
 
         return buttonSize;
     }
@@ -176,14 +141,24 @@ class NDButton {
 
 
     // Draw the text on the button
-    void paint(Graphics2D g) {
+    void drawStringCenter(Graphics2D g) {
         FontMetrics fm = g.getFontMetrics();
         g.setColor(Color.WHITE);
         g.setFont(new Font("Sans-Serif", Font.PLAIN, 18));
 
-        textWidth = fm.stringWidth(text);
-        textCenterHorz = unselectedImage.getWidth(null) / 2 - textWidth / 2;
+        textCenterHorz = unselectedImage.getWidth(null) / 2 - fm.stringWidth(text) / 2;
         textCenterVert = unselectedImage.getHeight(null) / 2 + fm.getAscent() / 2;
-        g.drawString(text, textCenterHorz + x + textDisplacementHorz, textCenterVert + y);
+        g.drawString(text, x + textCenterHorz, y + textCenterVert);
+    }
+
+    // Uses user inputted text horizontal displacement
+    // Displaced from the very right of the button
+    void drawStringDisplaced(Graphics2D g) {
+        FontMetrics fm = g.getFontMetrics();
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Sans-Serif", Font.PLAIN, 18));
+
+        textCenterVert = unselectedImage.getHeight(null) / 2 + fm.getAscent() / 2;
+        g.drawString(text, x + textDisplacementHorz, y + textCenterVert);
     }
 }
