@@ -22,26 +22,36 @@ public class Window extends JPanel {
     public static final int WINDOW_HEIGHT = 1050;
     public static final Color BACKGROUND_COLOR = Color.BLACK;
 
-    // Position of keys (in pixels)
+    // Position of top keys (in pixels)
     private int mapKeyX = 35;
     private int keysY = 20;
     private int mapPlanKeysGap = 10;
     private int planMenuKeysGap = 25;
 
+    // Position of top keys (in pixels)
+    private int mapCtrX = 40;
+    private int mapCtrY = 950;
+    private int mapCtrGap = 10;
+
     private JFrame window;
 
+    // Top keys
     private NDButton mapKey;
     private NDButton planKey;
     private NDButton menuKey;
     private Menu menu;
 
-    private int[] menuXPos;
-    private int[] menuYPos;
+    // Bottom keys
+    private NDButton pickWaypointKey;
+    private NDButton mapCtrAirplane;
+    private NDButton mapCtrDest;
+    private NDButton mapCtrCursor;
+    private NDButton mapCtrCtrOn;
 
 
     // Constructor for GUI components and window behaviour
     public Window() {
-        // Create the buttons
+        // Create the top three buttons
         mapKey = new NDButton(mapKeyX, keysY, "MAP", 0, "images/keysUnselected.png", "images/keysSelected.png");
 
         planKey = new NDButton(mapKey.getSize()[0] + mapKey.getX() + mapPlanKeysGap, keysY, "PLAN", 0, 
@@ -50,10 +60,36 @@ public class Window extends JPanel {
         menuKey = new NDButton(planKey.getSize()[0] + planKey.getX() + planMenuKeysGap, keysY, "MENU", 0, 
                                 "images/menuKeyUnselected.png", "images/menuKeySelected.png");
 
+        // Create the menu
         menu = new Menu(menuKey);
 
+        // Create the bottom buttons
+        pickWaypointKey = new NDButton(590, mapCtrY, "", 0, 
+                                "images/pickWptUnselected.png", "images/pickWptSelected.png");
+
+        mapCtrAirplane = new NDButton(mapCtrX, mapCtrY, "AIRPLANE", 0, 
+                                "images/mapCtrKeyUnselected.png", "images/mapCtrKeySelected.png");
+
+        mapCtrDest = new NDButton(mapCtrAirplane.getSize()[0] + mapCtrAirplane.getX() + mapCtrGap, mapCtrY, "DEST", 0,
+                                "images/mapCtrKeyUnselected.png", "images/mapCtrKeySelected.png");
+
+        mapCtrCursor = new NDButton(mapCtrDest.getSize()[0] + mapCtrDest.getX() + mapCtrGap, mapCtrY, "CURSOR", 0,
+                                "images/mapCtrKeyUnselected.png", "images/mapCtrKeySelected.png");
+
+        mapCtrCtrOn = new NDButton(mapCtrCursor.getSize()[0] + mapCtrCursor.getX() + mapCtrGap, mapCtrY, "CTR ON", 0,
+                                "images/mapCtrKeyUnselected.png", "images/mapCtrKeySelected.png");
+
+        // Functionality
         listeners();
 
+        // On-start settings
+        mapKey.select();
+        menu.setMapMode();
+        mapCtrAirplane.setVisibility(false);
+        mapCtrDest.setVisibility(false);
+        mapCtrCursor.setVisibility(false);
+        mapCtrCtrOn.setVisibility(false);
+        
         // Create the window itself and draw all the GUI components to it
         window = new JFrame("Route Visualizer");
         window.add(this);
@@ -70,20 +106,114 @@ public class Window extends JPanel {
     private void listeners() {
         this.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+                // Top main 3 keys: MAP PLAN MENU
                 if (mapKey.isMouseHover(e.getPoint())) {
                     mapKey.select();
                     planKey.unselect();
                     menu.setMapMode();
+
+                    mapCtrAirplane.setVisibility(false);
+                    mapCtrDest.setVisibility(false);
+                    mapCtrCursor.setVisibility(false);
+                    mapCtrCtrOn.setVisibility(false);
                 }
                 if (planKey.isMouseHover(e.getPoint())) {
                     planKey.select();
                     mapKey.unselect();
                     menu.setPlanMode();
+
+                    mapCtrAirplane.setVisibility(true);
+                    mapCtrDest.setVisibility(true);
+                    mapCtrCursor.setVisibility(true);
+                    mapCtrCtrOn.setVisibility(true);
                 }
                 if (menuKey.isMouseHover(e.getPoint())) {
                     menuKey.toggle();
                     menu.toggleVisibility();
                 }
+
+                // Hide popupmenu when clicking elsewhere on screen
+                if (!menu.isMouseHoverMenu(e.getPoint()) && !menuKey.isMouseHover(e.getPoint())) {
+                    menuKey.unselect();
+                    menu.setVisibility(false);
+                }
+
+                // Must add popup menu listeners here :(
+                if (menu.isMapMode()) {
+                    if (menu.mapSelectionVSD.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionVSD.toggle();
+                    }
+                    if (menu.mapSelectionWXR.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionWXR.select();
+                        menu.mapSelectionTERR.unselect();
+                    }
+                    if (menu.mapSelectionTERR.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionTERR.select();
+                        menu.mapSelectionWXR.unselect();
+                    }
+                    if (menu.mapSelectionTFC.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionTFC.toggle();
+                    }
+                    if (menu.mapSelectionAPT.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionAPT.toggle();
+                    }
+                    if (menu.mapSelectionWPT.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionWPT.toggle();
+                    }
+                    if (menu.mapSelectionSTA.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionSTA.toggle();
+                    }
+                    if (menu.mapSelectionPOS.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionPOS.toggle();
+                    }
+                    if (menu.mapSelectionDATA.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionDATA.toggle();
+                    }
+                    if (menu.mapSelectionVORL.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionVORL.toggle();
+                    }
+                    if (menu.mapSelectionVORR.isMouseHover(e.getPoint())) {
+                        menu.mapSelectionVORR.toggle();
+                    }
+                    if (menu.mapExitKey.isMouseHover(e.getPoint())) {
+                        menu.mapExitKey.toggle();
+                    }
+                }
+                else {
+                    if (menu.planSelectionAPT.isMouseHover(e.getPoint())) {
+                        menu.planSelectionAPT.toggle();
+                    }
+                    if (menu.planSelectionWPT.isMouseHover(e.getPoint())) {
+                        menu.planSelectionWPT.toggle();
+                    }
+                    if (menu.planSelectionSTA.isMouseHover(e.getPoint())) {
+                        menu.planSelectionSTA.toggle();
+                    }
+                    if (menu.planSelectionDATA.isMouseHover(e.getPoint())) {
+                        menu.planSelectionDATA.toggle();
+                    }
+                    if (menu.planExitKey.isMouseHover(e.getPoint())) {
+                        menu.planExitKey.toggle();
+                    }
+                }
+
+                if (pickWaypointKey.isMouseHover(e.getPoint())) {
+                    pickWaypointKey.toggle();
+                }
+
+                if (mapCtrAirplane.isMouseHover(e.getPoint()) && !menu.isMapMode()) {
+                    mapCtrAirplane.toggle();
+                }
+                if (mapCtrDest.isMouseHover(e.getPoint()) && !menu.isMapMode()) {
+                    mapCtrDest.toggle();
+                }
+                if (mapCtrCursor.isMouseHover(e.getPoint()) && !menu.isMapMode()) {
+                    mapCtrCursor.toggle();
+                }
+                if (mapCtrCtrOn.isMouseHover(e.getPoint()) && !menu.isMapMode()) {
+                    mapCtrCtrOn.toggle();
+                }
+
                 repaint();
             }
         });
@@ -99,19 +229,28 @@ public class Window extends JPanel {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setFont(new Font("Sans-Serif", Font.PLAIN, 18));
 
-        // Draw the keys
-        g2.drawImage(mapKey.getImage(), mapKey.getX(), mapKey.getY(), null);
-        mapKey.drawStringCenter(g2);
+        // Draw the main three keys
+        mapKey.drawButton(g2, true);
 
-        g2.drawImage(planKey.getImage(), planKey.getX(), planKey.getY(), null);
-        planKey.drawStringCenter(g2);
+        planKey.drawButton(g2, true);
 
-        g2.drawImage(menuKey.getImage(), menuKey.getX(), menuKey.getY(), null);
-        menuKey.drawStringCenter(g2);
+        menuKey.drawButton(g2, true);
 
-        if (menu.getVisibility()) {
-            menu.drawMenu(g2);
-        }
+
+        // Draw the popupmenu
+        menu.drawMenu(g2);
+
+
+        // Bottom Keys
+        pickWaypointKey.drawButton(g2, true);
+
+        mapCtrAirplane.drawButton(g2, true);
+        
+        mapCtrDest.drawButton(g2, true);
+
+        mapCtrCursor.drawButton(g2, true);
+
+        mapCtrCtrOn.drawButton(g2, true);
     }
 
     // Runner
