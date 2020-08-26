@@ -32,6 +32,7 @@ class NDButton {
     private int textCenterHorz;
     private int textCenterVert;
 
+    private boolean visible;
 
     // Constructor of the button and images
     NDButton(int xPos, int yPos, String name, int textXDisplacement, String unselectedDir, String selectedDir) {
@@ -39,6 +40,8 @@ class NDButton {
         y = yPos;
         text = name;
         textDisplacementHorz = textXDisplacement;
+
+        visible = true;
 
         // Create the images of the button
         URL unselectedImageDir = getClass().getClassLoader().getResource(unselectedDir);
@@ -130,7 +133,25 @@ class NDButton {
     }
 
 
+    // Whether the button is visible
+    void setVisibility(boolean visibility) {
+        visible = visibility;
+    }
+
+    void toggleVisibility() {
+        if (visible) {
+            visible = false;
+        } else {
+            visible = true;
+        }
+    }
+
+    boolean getVisibility() {
+        return visible;
+    }
+
     // Determine whether the mouse is in the hitbox of the button
+    // The button hitbox is ONLY the hitbox of the image
     boolean isMouseHover(Point mousePoint) {
         if (mousePoint.getX() >= getX() && mousePoint.getX() <= getX() + getSize()[0] &&
             mousePoint.getY() >= getY() && mousePoint.getY() <= getY() + getSize()[1]) {
@@ -141,9 +162,9 @@ class NDButton {
 
 
     // Draw the text on the button
-    void drawStringCenter(Graphics2D g) {
+    void drawStringCenter(Graphics2D g, Color color) {
         FontMetrics fm = g.getFontMetrics();
-        g.setColor(Color.WHITE);
+        g.setColor(color);
         g.setFont(new Font("Sans-Serif", Font.PLAIN, 18));
 
         textCenterHorz = unselectedImage.getWidth(null) / 2 - fm.stringWidth(text) / 2;
@@ -153,12 +174,24 @@ class NDButton {
 
     // Uses user inputted text horizontal displacement
     // Displaced from the very right of the button
-    void drawStringDisplaced(Graphics2D g) {
+    void drawStringDisplaced(Graphics2D g, Color color) {
         FontMetrics fm = g.getFontMetrics();
-        g.setColor(Color.WHITE);
+        g.setColor(color);
         g.setFont(new Font("Sans-Serif", Font.PLAIN, 18));
 
         textCenterVert = unselectedImage.getHeight(null) / 2 + fm.getAscent() / 2;
         g.drawString(text, x + textDisplacementHorz, y + textCenterVert);
+    }
+
+    void drawButton(Graphics2D g, boolean centered) {
+        if (visible) {
+            g.drawImage(this.getImage(), this.getX(), this.getY(), null);   
+
+            if (centered) {
+                this.drawStringCenter(g, Color.WHITE);
+            } else {
+                this.drawStringDisplaced(g, Color.WHITE);
+            }
+        }
     }
 }
