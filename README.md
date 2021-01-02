@@ -28,6 +28,7 @@ Summary of each revision:
     - 6th order was chosen since overfitting was not considered a problem
 
 #### Assumptions
+- The following assumptions are valid because of initial data analysis and was discussed
 - Assumes ROC is only (or mostly) affected by `ALTITUDE and WEIGHT`
 - Assumes `ALTITUDE and WEIGHT` are completely independent
   - EDIT: Significance P and F in regression analysis supports this
@@ -83,6 +84,7 @@ Regression was done with both Excel and Octave. Data was gathered with the help 
 
 #### Data Adjustments
 Data was taken for 787-8 (B787-8 (502)eis v11) but **will be** adjusted for 787-9 (a slightly larger aircraft)\
+Factors determined by discussion and comparisons of the two planes\
 May be adjusted by after regression:
   - Climb rate (feet/sec) multiplied by a factor of `0.92`
   - Fuel burnt (kg) multiplied by a factor of `1.08`
