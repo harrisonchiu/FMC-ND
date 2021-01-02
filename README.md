@@ -1,6 +1,6 @@
 # X-Plane-Altitude Part 1
 
-**This is a documentation of the regression and its analysis so that future changes can easily be made to the altitude estimator and flight path computer in X-Plane.**
+**This is a documentation of the data collection, regression and its analysis so that future changes can easily be made to the altitude estimator and flight path computer in X-Plane.**
 
 Estimate the 787-9 plane's ROC with multiple regression from the 787-8 plane's altitude and weight
 
@@ -79,7 +79,7 @@ Datasets for 787-8 (B787-8 (502)eis v11) plane with settings:\
   9. 3500 nm // 25000 kg // 186546 kg
   10. 2000 nm // 0 kg // 142697 kg
   
-Regression was done with both Excel and Octave. Data was gathered by PianoX.
+Regression was done with both Excel and Octave. Data was gathered with the help of PianoX.
 
 #### Data Adjustments
 Data was taken for 787-8 (B787-8 (502)eis v11) but **will be** adjusted for 787-9 (a slightly larger aircraft)\
