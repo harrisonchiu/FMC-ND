@@ -1,4 +1,4 @@
-# X-Plane-Altitude Part 1
+# X-Plane Data for 787-9 Climbing Performance
 
 **This is a documentation of the data collection, regression and its analysis so that future changes can easily be made to the altitude estimator and flight path computer in X-Plane.**
 
