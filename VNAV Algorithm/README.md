@@ -1,6 +1,7 @@
 # VNAV Algorithm
 
 ## Removed due to proprietary software
+## kept some functioning (pseudo-ish) code for documentation
 
 PART 1 of VNAV: Calculate Information of a Step
 
@@ -11,11 +12,6 @@ Calculate ROC, Altitude, Weight, Distance of a step to be used in VNAV\'
 - Finish get_climbrate()
 - Finish in general lol
 
-#### ???
-- Use of initial/final altitude?
+#### concerns
 - "Final distance to Altitude (altitude)" <-- from Code Layout
-- Should use constant or a variable g value?
-  - Which altitude to use (initial/final) for the g value?
-  - Need a get_altitude() ?
 - Constants for fuel loss calculations?
-- Over excessive use of <private> keyword?
