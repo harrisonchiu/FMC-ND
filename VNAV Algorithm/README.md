@@ -1,5 +1,7 @@
 # VNAV Algorithm
 
+## Removed due to proprietary software
+
 PART 1 of VNAV: Calculate Information of a Step
 
 ### STEP
