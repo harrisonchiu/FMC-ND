@@ -1,6 +1,7 @@
 # Navigational Display for X-Plane
 
 ## Demo code, cannot show all because it is a work in progress proprietary software for Magknight's B787-9\\
+## Go to parent folder to see statistical model using in navigational display
 https://store.x-plane.org/B787-9-Aviator-Edition_p_921.html
 
 #### Demo visual of Navigational Display
