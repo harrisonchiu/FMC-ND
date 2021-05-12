@@ -1,16 +1,12 @@
 # X-Plane Data for 787-9 Climbing Performance
 
-## This is a documentation of the data collection, regression and its analysis so that future changes can easily be made to the altitude estimator and flight path computer in Magknight's plane within X-Plane. This is only used only for reference of part of the project. This is NOT the repo for the navigational display code for Magknight's B787, a propreitary software.
-
-Tools used: Excel, Matlab/Octave, Python, R
+## This is a documentation of the data collection, regression and its analysis so that future changes can easily be made to the altitude estimator and flight path computer in Magknight's plane within X-Plane.
 
 Estimate the 787-9 plane's ROC with multiple regression from the 787-8 plane's altitude and weight
-
 
 **Units for weight:** `Newtons`\
 **Units for Altitude:** `Feet`\
 **Units for ROC:** `Feet/min`\
-
 
 
 #### Revisions
