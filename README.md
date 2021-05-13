@@ -2,7 +2,7 @@
 
 ## This is a documentation of the data collection, regression and its analysis so that future changes can easily be made to the altitude estimator and Navigational Display in Magknight's plane within X-Plane.
 
-#### Abbreviate Navigational Display as ND
+### Abbreviate Navigational Display as ND
 
 Estimate the 787-9 plane's ROC with multiple regression from the 787-8 plane's altitude and weight
 
